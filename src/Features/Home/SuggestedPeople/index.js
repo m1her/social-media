@@ -86,7 +86,6 @@ const SuggestedPeople = ({
       setfollowing(updatedFollowing);
     } else {
       getDoc(doc(db, "users", currentUserId)).then((docs) => {
-        console.log(docs.data().following);
         updateDoc(doc(db, "users", currentUserId), {
           following: [
             ...docs.data().following,
@@ -104,7 +103,6 @@ const SuggestedPeople = ({
       });
 
       getDoc(doc(db, "users", id)).then((docs) => {
-        console.log(docs.data().following);
         updateDoc(doc(db, "users", id), {
           followers: [
             ...docs.data().followers,
@@ -118,9 +116,6 @@ const SuggestedPeople = ({
       });
     }
   };
-  useEffect(() => {
-    console.log(suggestions);
-  }, [suggestions]);
 
   return (
     <div className="col-3 mobile-hidden">

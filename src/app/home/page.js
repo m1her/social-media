@@ -19,17 +19,20 @@ import { useSelector } from "react-redux";
 const home = () => {
   const postsFlag = useSelector((state) => state.posts.flag);
   const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem("TrainingUser"))
+    typeof window !== "undefined"
+      ? JSON.parse(localStorage.getItem("TrainingUser"))
+      : ""
   );
 
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    console.log(window.localStorage.getItem("TrainingUser"));
+    console.log("");
   }, []);
 
   window.addEventListener("storage", () => {
-    setUser(JSON.parse(localStorage.getItem("TrainingUser")) || []);
-    console.log("updated");
+    if (typeof window !== "undefined") {
+      setUser(JSON.parse(localStorage.getItem("TrainingUser")) || []);
+    }
   });
 
   const deletePostHandler = (postIndex) => {
@@ -64,7 +67,6 @@ const home = () => {
 
         Promise.all(promises).then((newData) => {
           setPosts(newData);
-          console.log(newData);
         });
       }
     );

@@ -14,7 +14,6 @@ const DisplayImages = ({ images, closeImageDisplay }) => {
   const increaseIndex = () => {
     if (imageIndex != images.length - 1) {
       setImageIndex((prev) => prev + 1);
-      console.log("test");
     }
   };
   const decreaseIndex = () => {

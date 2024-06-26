@@ -88,7 +88,6 @@ const SearchPeople = () => {
       setfollowing(updatedFollowing);
     } else {
       getDoc(doc(db, "users", user[0].id)).then((docs) => {
-        console.log(docs.data().following);
         updateDoc(doc(db, "users", user[0]?.id), {
           following: [
             ...docs.data().following,
@@ -106,7 +105,6 @@ const SearchPeople = () => {
       });
 
       getDoc(doc(db, "users", id)).then((docs) => {
-        console.log(docs.data().following);
         updateDoc(doc(db, "users", id), {
           followers: [
             ...docs.data().followers,

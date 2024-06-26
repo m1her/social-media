@@ -18,7 +18,9 @@ const SearchPosts = () => {
   const postsFlag = useSelector((state) => state.posts.flag);
   const searchTerm = useSelector((state) => state.search.term);
   const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem("TrainingUser"))
+    typeof window !== "undefined"
+      ? JSON.parse(localStorage.getItem("TrainingUser"))
+      : ""
   );
   const [posts, setPosts] = useState([]);
 
@@ -60,7 +62,6 @@ const SearchPosts = () => {
         Promise.all(promises).then((newData) => {
           setPosts(newData);
           setLoading(false);
-          console.log(newData);
         });
       }
     );

@@ -35,7 +35,6 @@ const Login = () => {
           emailRef.current.value,
           passwordRef.current.value
         );
-        console.log(user.user.uid);
         await getDocs(collection(db, "users")).then((querySnapshot) => {
           const newData = querySnapshot.docs
             .filter((doc) => doc.data().uid == user.user.uid)

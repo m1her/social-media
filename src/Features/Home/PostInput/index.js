@@ -72,7 +72,6 @@ const PostInput = ({ user }) => {
       setPostImage([]);
       setPostFiles([]);
       setLengthFlag(0);
-      console.log("doneee");
       const updatedPosts = {
         user: user[0].name,
         userImg: user[0].profileImg,
